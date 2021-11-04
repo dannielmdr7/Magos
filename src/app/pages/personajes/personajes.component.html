@@ -1,25 +1,28 @@
-<nz-table #basicTable [nzData]="personajes" nzFrontPagination="false">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Patronus</th>
-      <th>Age</th>
-      <th>Image</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let personaje of personajes">
-      <td>{{ personaje.name }}</td>
-      <td>{{ personaje.patronus }}</td>
-      <td>{{ getAge(personaje.yearOfBirth) }}</td>
-      <td>
-        <img
-          *ngIf="personaje.image"
-          class="size-image"
-          [src]="personaje.image"
-        />
-        <h1 *ngIf="!personaje.image">imágen de {{ personaje.actor }}</h1>
-      </td>
-    </tr>
-  </tbody>
-</nz-table>
+<div>
+  <app-select class="my-4 w-24"></app-select>
+  <nz-table #basicTable [nzData]="personajes" nzFrontPagination="false">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Patronus</th>
+        <th>Age</th>
+        <th>Image</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let personaje of personajes">
+        <td>{{ personaje.name }}</td>
+        <td>{{ personaje.patronus }}</td>
+        <td>{{ getAge(personaje.yearOfBirth) }}</td>
+        <td>
+          <img
+            *ngIf="personaje.image"
+            class="size-image"
+            [src]="personaje.image"
+          />
+          <h1 *ngIf="!personaje.image">imágen de {{ personaje.actor }}</h1>
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>
+</div>
