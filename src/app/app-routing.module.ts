@@ -3,11 +3,15 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: 'home',
+    path: 'personajes',
     loadChildren: () =>
-      import('./layout/layout.module').then((m) => m.LayoutModule),
+      import('./pages/personajes/personajes.module').then(
+        (m) => m.PersonajesModule
+      ),
   },
-  { path: '**', redirectTo: 'home', pathMatch: 'full' },
+  { path: 'estudiantes', loadChildren: () => import('./pages/estudiante/estudiante.module').then(m => m.EstudianteModule) },
+  { path: 'profesores', loadChildren: () => import('./pages/profesores/profesores.module').then(m => m.ProfesoresModule) },
+  { path: '**', redirectTo: 'personajes', pathMatch: 'full' },
 ];
 
 @NgModule({
