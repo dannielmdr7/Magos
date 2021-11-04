@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Profesor } from 'src/app/shared/Interfaces/ProfesorInterface';
 import { DataService } from '../../services/data.service';
+import { ApiResponse } from '../../shared/Interfaces/ApiResponseInterface';
 
 @Component({
   selector: 'app-profesores',
@@ -8,7 +9,7 @@ import { DataService } from '../../services/data.service';
   styleUrls: ['./profesores.component.css'],
 })
 export class ProfesoresComponent implements OnInit {
-  public profesores: Profesor[] = [];
+  public profesores: ApiResponse[] = [];
   constructor(private dataService: DataService) {}
 
   ngOnInit(): void {

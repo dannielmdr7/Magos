@@ -1,6 +1,7 @@
 import { Component, EventEmitter, OnInit } from '@angular/core';
 import { DataService } from '../../services/data.service';
 import { House } from '../Interfaces/HouseInterface';
+import { StoreService } from '../../services/store.service';
 
 @Component({
   selector: 'app-select',
@@ -8,15 +9,21 @@ import { House } from '../Interfaces/HouseInterface';
   styleUrls: ['./select.component.css'],
 })
 export class SelectComponent implements OnInit {
-  public selection: string = 'Seleccione una casa';
+  public selection: string = '';
   public personajesEmitter = new EventEmitter<House>();
 
-  constructor(private dataService: DataService) {}
+  constructor(
+    private dataService: DataService,
+    private storeService: StoreService
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.selection = this.storeService.getItem();
+  }
   selectHouse(house: string) {
     this.selection = house;
     this.getDataHouse(house);
+    this.storeService.setItem(house);
   }
   getDataHouse(house: string) {
     this.dataService.getPersonaje(house);

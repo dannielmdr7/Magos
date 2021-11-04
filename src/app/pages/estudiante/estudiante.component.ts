@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Estudiantes } from 'src/app/shared/Interfaces/EstudiantesInterface';
+
 import { DataService } from '../../services/data.service';
+import { ApiResponse } from '../../shared/Interfaces/ApiResponseInterface';
 
 @Component({
   selector: 'app-estudiante',
@@ -8,7 +9,7 @@ import { DataService } from '../../services/data.service';
   styleUrls: ['./estudiante.component.css'],
 })
 export class EstudianteComponent implements OnInit {
-  public estudiantes: Estudiantes[] = [];
+  public estudiantes: ApiResponse[] = [];
 
   constructor(private dataService: DataService) {}
 
