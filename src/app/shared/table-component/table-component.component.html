@@ -1,0 +1,21 @@
+<nz-table #basicTable [nzData]="datos" nzFrontPagination="false">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Patronus</th>
+      <th>Age</th>
+      <th>Image</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of datos">
+      <td>{{ data.name }}</td>
+      <td>{{ data.patronus }}</td>
+      <td>{{ getAge(data.yearOfBirth) }}</td>
+      <td>
+        <img *ngIf="data.image" class="size-image" [src]="data.image" />
+        <h1 *ngIf="!data.image">imágen de {{ data.actor }}</h1>
+      </td>
+    </tr>
+  </tbody>
+</nz-table>

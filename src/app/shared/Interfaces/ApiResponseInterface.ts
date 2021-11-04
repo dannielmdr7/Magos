@@ -1,12 +1,8 @@
 export interface ApiResponse {
   name: string;
-
   yearOfBirth: number | string;
-
   patronus: Patronus;
-
   actor: string;
-
   image: string;
 }
 
