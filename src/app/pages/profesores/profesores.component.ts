@@ -1,5 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import Swal from 'sweetalert2';
 import { DataService } from '../../services/data.service';
 import { ApiResponse } from '../../shared/Interfaces/ApiResponseInterface';
 
@@ -15,15 +16,25 @@ export class ProfesoresComponent implements OnInit {
   constructor(private dataService: DataService) {}
 
   ngOnInit(): void {
+    this.loading();
     this.dataService.getProfesores().subscribe(
       (data) => {
         this.profesores = data;
         this.profesoresFilter = data;
+        Swal.close();
       },
       (err: HttpErrorResponse) => {
         console.log(err.error);
       }
     );
+  }
+  loading() {
+    Swal.fire({
+      title: 'Loading...',
+      didOpen: () => {
+        Swal.showLoading();
+      },
+    });
   }
   handleKeyboardEvent() {
     this.profesores = this.profesoresFilter.filter((personaje) =>

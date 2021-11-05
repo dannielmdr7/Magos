@@ -11,16 +11,26 @@ export class HandleUsersComponent implements OnInit {
   public newStudentModal: boolean = false;
   public solicitudes: NewUser[] = [];
   public listUsers: boolean = false;
+  private data = localStorage.getItem('solicitudes') || '';
   validateForm!: FormGroup;
 
   constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
+    if (this.data.length > 0) {
+      this.chargeSolicitudes();
+    }
     this.validateForm = this.fb.group({
       userName: [null, [Validators.required]],
       email: [null, [Validators.required]],
       age: [null, [Validators.required]],
     });
+  }
+  chargeSolicitudes() {
+    let datos: NewUser[] = JSON.parse(
+      localStorage.getItem('solicitudes') || ''
+    );
+    this.solicitudes = datos;
   }
   showNewStudent() {
     this.newStudentModal = true;
@@ -44,6 +54,7 @@ export class HandleUsersComponent implements OnInit {
       age,
     };
     this.solicitudes.push(newUser);
+    localStorage.setItem('solicitudes', JSON.stringify(this.solicitudes));
 
     this.validateForm.reset();
   }

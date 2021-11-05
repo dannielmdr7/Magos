@@ -4,7 +4,7 @@ import { DataService } from '../../services/data.service';
 
 import { StoreService } from '../../services/store.service';
 import { ApiResponse } from '../../shared/Interfaces/ApiResponseInterface';
-
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-personajes',
   templateUrl: './personajes.component.html',
@@ -22,15 +22,25 @@ export class PersonajesComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
+    this.loading();
     this.item = this.storeService.getItem();
     this.dataService.getPersonaje(this.item);
     this.watchChanges();
+  }
+  loading() {
+    Swal.fire({
+      title: 'Loading...',
+      didOpen: () => {
+        Swal.showLoading();
+      },
+    });
   }
   watchChanges() {
     this.personajeSubscription.add(
       this.dataService.personajesEmitter.subscribe((data) => {
         if (data) {
           this.personajes = data;
+          Swal.close();
         }
       })
     );

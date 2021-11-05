@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import Swal from 'sweetalert2';
 
 import { DataService } from '../../services/data.service';
 import { ApiResponse } from '../../shared/Interfaces/ApiResponseInterface';
@@ -14,8 +15,18 @@ export class EstudianteComponent implements OnInit {
   constructor(private dataService: DataService) {}
 
   ngOnInit(): void {
+    this.loading();
     this.dataService.getEstudiantes().subscribe((data) => {
       this.estudiantes = data;
+      Swal.close();
+    });
+  }
+  loading() {
+    Swal.fire({
+      title: 'Loading...',
+      didOpen: () => {
+        Swal.showLoading();
+      },
     });
   }
   getAge(year: any) {
