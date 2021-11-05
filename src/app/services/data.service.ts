@@ -1,8 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, EventEmitter } from '@angular/core';
 import { ApiResponse } from '../shared/Interfaces/ApiResponseInterface';
-import { Estudiantes } from '../shared/Interfaces/EstudiantesInterface';
-import { Profesor } from '../shared/Interfaces/ProfesorInterface';
 
 @Injectable({
   providedIn: 'root',

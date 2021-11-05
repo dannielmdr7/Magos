@@ -21,4 +21,11 @@ export class TableComponentComponent implements OnInit {
       return 'No hay datos de la fecha de nacimiento';
     }
   }
+  getPatronus(patronus: string) {
+    if (patronus) {
+      return patronus;
+    } else {
+      return 'No hay información del Patronus';
+    }
+  }
 }

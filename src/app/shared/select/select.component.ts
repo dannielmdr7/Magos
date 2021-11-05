@@ -1,6 +1,6 @@
-import { Component, EventEmitter, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { DataService } from '../../services/data.service';
-import { House } from '../Interfaces/HouseInterface';
+
 import { StoreService } from '../../services/store.service';
 
 @Component({
@@ -10,7 +10,6 @@ import { StoreService } from '../../services/store.service';
 })
 export class SelectComponent implements OnInit {
   public selection: string = '';
-  public personajesEmitter = new EventEmitter<House>();
 
   constructor(
     private dataService: DataService,

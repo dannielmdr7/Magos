@@ -1,20 +1,22 @@
 <nz-table #basicTable [nzData]="datos" nzFrontPagination="false">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Patronus</th>
-      <th>Age</th>
-      <th>Image</th>
+      <th><h1 class="font-bold">Name</h1></th>
+      <th><h1 class="font-bold">Patronus</h1></th>
+      <th><h1 class="font-bold">Age</h1></th>
+      <th><h1 class="font-bold">Image</h1></th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let data of datos">
       <td>{{ data.name }}</td>
-      <td>{{ data.patronus }}</td>
+      <td>{{ getPatronus(data.patronus) }}</td>
       <td>{{ getAge(data.yearOfBirth) }}</td>
       <td>
         <img *ngIf="data.image" class="size-image" [src]="data.image" />
-        <h1 *ngIf="!data.image">imágen de {{ data.actor }}</h1>
+        <h1 *ngIf="!data.image" class="font-bold">
+          imágen de {{ data.actor }}
+        </h1>
       </td>
     </tr>
   </tbody>

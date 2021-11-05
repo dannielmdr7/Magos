@@ -1,1 +1,12 @@
+<div class="mx-4 w-3/12 p-1">
+  <nz-input-group nzSearch nzSize="large">
+    <input
+      type="text"
+      nz-input
+      placeholder="Search by Name"
+      [(ngModel)]="searchItem"
+      (ngModelChange)="handleKeyboardEvent()"
+    />
+  </nz-input-group>
+</div>
 <app-table-component [datos]="profesores"></app-table-component>

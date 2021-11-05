@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 
 import { NavBarComponent } from './nav-bar.component';
 
@@ -8,9 +9,9 @@ describe('NavBarComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ NavBarComponent ]
-    })
-    .compileComponents();
+      declarations: [NavBarComponent],
+      imports: [NzDropDownModule],
+    }).compileComponents();
   });
 
   beforeEach(() => {

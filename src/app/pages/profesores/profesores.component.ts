@@ -1,5 +1,5 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Profesor } from 'src/app/shared/Interfaces/ProfesorInterface';
 import { DataService } from '../../services/data.service';
 import { ApiResponse } from '../../shared/Interfaces/ApiResponseInterface';
 
@@ -10,20 +10,24 @@ import { ApiResponse } from '../../shared/Interfaces/ApiResponseInterface';
 })
 export class ProfesoresComponent implements OnInit {
   public profesores: ApiResponse[] = [];
+  public profesoresFilter: ApiResponse[] = [];
+  public searchItem: string = '';
   constructor(private dataService: DataService) {}
 
   ngOnInit(): void {
-    this.dataService.getProfesores().subscribe((data) => {
-      this.profesores = data;
-    });
+    this.dataService.getProfesores().subscribe(
+      (data) => {
+        this.profesores = data;
+        this.profesoresFilter = data;
+      },
+      (err: HttpErrorResponse) => {
+        console.log(err.error);
+      }
+    );
   }
-  getAge(year: any) {
-    if (year) {
-      let today = new Date();
-      let age = today.getFullYear() - year;
-      return age;
-    } else {
-      return 'No hay datos de la fecha de nacimiento';
-    }
+  handleKeyboardEvent() {
+    this.profesores = this.profesoresFilter.filter((personaje) =>
+      personaje.name.toLocaleLowerCase().includes(this.searchItem.toLowerCase())
+    );
   }
 }

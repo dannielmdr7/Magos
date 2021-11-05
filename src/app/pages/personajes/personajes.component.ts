@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { DataService } from '../../services/data.service';
-import { House } from '../../shared/Interfaces/HouseInterface';
+
 import { StoreService } from '../../services/store.service';
 import { ApiResponse } from '../../shared/Interfaces/ApiResponseInterface';
 
@@ -13,6 +13,7 @@ import { ApiResponse } from '../../shared/Interfaces/ApiResponseInterface';
 export class PersonajesComponent implements OnInit, OnDestroy {
   private personajeSubscription: Subscription = new Subscription();
   public personajes: ApiResponse[] = [];
+
   public item: string = '';
 
   constructor(

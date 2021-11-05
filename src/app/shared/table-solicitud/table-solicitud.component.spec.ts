@@ -1,21 +1,21 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TableComponentComponent } from './table-component.component';
+import { TableSolicitudComponent } from './table-solicitud.component';
 import { NzTableModule } from 'ng-zorro-antd/table';
 
-describe('TableComponentComponent', () => {
-  let component: TableComponentComponent;
-  let fixture: ComponentFixture<TableComponentComponent>;
+describe('TableSolicitudComponent', () => {
+  let component: TableSolicitudComponent;
+  let fixture: ComponentFixture<TableSolicitudComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [TableComponentComponent],
+      declarations: [TableSolicitudComponent],
       imports: [NzTableModule],
     }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TableComponentComponent);
+    fixture = TestBed.createComponent(TableSolicitudComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
